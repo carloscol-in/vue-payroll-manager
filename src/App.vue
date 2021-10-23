@@ -1,6 +1,5 @@
 <template>
   <div v-if="user">
-    <p>User: {{ user }}</p>
     <router-view/>
   </div>
 
