@@ -20,7 +20,7 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
-import { auth } from '../../utils/firebase';
+import { auth, signInWithEmailAndPassword } from '../../utils/firebase';
 
 export default {
   name: 'Login',
@@ -42,7 +42,12 @@ export default {
       formError.value = {};
       try {
         await schemaForm.validate(formData, { abortEarly: false });
-        console.log('All good!');
+        try {
+          const { email, password } = formData;
+          signInWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+          console.error(error);
+        }
       } catch (error) {
         error.inner.forEach((err) => {
           formError.value[err.path] = err.message;
