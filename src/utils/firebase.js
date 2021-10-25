@@ -6,6 +6,9 @@ import {
   signOut,
   signInWithEmailAndPassword,
   updateProfile,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  updateEmail,
 } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,4 +38,7 @@ export {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  updateEmail,
 };
