@@ -17,5 +17,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'vue/no-unused-components': 'warn',
     'max-len': 'off',
+    'prefer-const': 'off',
   },
 };
