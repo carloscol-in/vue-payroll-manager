@@ -6,7 +6,7 @@
       </div>
 
       <div class="field">
-        <input type="password" name="password" placeholder="Current password" v-model="formData.password" :class="{ error: formError.password }">
+        <input type="password" placeholder="Current password" v-model="formData.password" :class="{ error: formError.password }">
       </div>
     </div>
 
@@ -19,14 +19,16 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
+import { reauthenticate } from '../../utils/firebase-functions';
+import { auth, updateEmail } from '../../utils/firebase';
 
 export default {
   name: 'ChangeEmail',
   setup() {
     let formData = {};
-    let loading = ref(false);
     let formError = ref({});
     let messageError = ref('');
+    let loading = ref(false);
 
     const schemaForm = Yup.object().shape({
       email: Yup.string().email(true).required(true),
@@ -35,11 +37,19 @@ export default {
 
     const onChangeEmail = async () => {
       formError.value = {};
+      messageError.value = '';
       loading.value = true;
 
       try {
         await schemaForm.validate(formData, { abortEarly: false });
-        console.log('all good!');
+        try {
+          const { email, password } = formData;
+          await reauthenticate(password);
+          await updateEmail(auth.currentUser, email);
+          auth.signOut();
+        } catch (err) {
+          messageError.value = err.code;
+        }
       } catch (err) {
         err.inner.forEach((e) => {
           formError.value[e.path] = e.message;
@@ -52,6 +62,7 @@ export default {
     return {
       formData,
       formError,
+      loading,
       messageError,
       onChangeEmail,
     };
