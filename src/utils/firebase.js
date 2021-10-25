@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,13 +25,13 @@ const app = initializeApp(firebaseConfig);
 
 // Utils
 const auth = getAuth();
-console.log(auth, typeof (auth));
 
 // exports
 export {
   app,
   auth,
   signOut,
+  updateProfile,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
