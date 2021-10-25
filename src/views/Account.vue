@@ -5,9 +5,16 @@
     <div class="account__section">
       <p class="title">
         <span v-if="!user.displayName">Add name</span>
-        <span v-if="user.displayName">Change name ({{ user.displayName }}...)</span>
+        <span v-if="user.displayName">Change name ({{ user.displayName }})</span>
       </p>
       <ChangeName/>
+    </div>
+
+    <div class="account__section">
+      <p class="title">
+        Change Email (<span>{{ user.email }}</span>)
+      </p>
+      <ChangeEmail/>
     </div>
   </BasicLayout>
 </template>
@@ -17,18 +24,18 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 import BasicLayout from '../layouts/BasicLayout.vue';
 import ChangeName from '../components/Account/ChangeName.vue';
+import ChangeEmail from '../components/Account/ChangeEmail.vue';
 
 export default {
   name: 'Account',
   components: {
     BasicLayout,
     ChangeName,
+    ChangeEmail,
   },
   setup() {
     const store = useStore();
     const user = computed(() => store.state.user);
-
-    console.log(user);
 
     return {
       user,
