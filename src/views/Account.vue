@@ -16,6 +16,13 @@
       </p>
       <ChangeEmail/>
     </div>
+
+    <div class="account__section">
+      <p class="title">
+        Change Password (<span>{{ user.email }}</span>)
+      </p>
+      <ChangePassword/>
+    </div>
   </BasicLayout>
 </template>
 
@@ -25,6 +32,7 @@ import { useStore } from 'vuex';
 import BasicLayout from '../layouts/BasicLayout.vue';
 import ChangeName from '../components/Account/ChangeName.vue';
 import ChangeEmail from '../components/Account/ChangeEmail.vue';
+import ChangePassword from '../components/Account/ChangePassword.vue';
 
 export default {
   name: 'Account',
@@ -32,6 +40,7 @@ export default {
     BasicLayout,
     ChangeName,
     ChangeEmail,
+    ChangePassword,
   },
   setup() {
     const store = useStore();
