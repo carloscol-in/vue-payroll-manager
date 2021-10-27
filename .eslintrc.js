@@ -18,5 +18,6 @@ module.exports = {
     'vue/no-unused-components': 'warn',
     'max-len': 'off',
     'prefer-const': 'off',
+    'camelcase': 'off',
   },
 };
