@@ -13,7 +13,7 @@ import { ref, onMounted } from 'vue';
 import {
   getFirestore, collection, orderBy, query, getDocs,
 } from 'firebase/firestore';
-import { auth } from '../utils/firebase';
+import { getAuth } from 'firebase/auth';
 import BasicLayout from '../layouts/BasicLayout.vue';
 import UploadPayroll from '../components/Payrolls/UploadPayroll.vue';
 
@@ -28,6 +28,7 @@ export default {
   setup() {
     const payrolls = ref(null);
     const db = getFirestore();
+    const auth = getAuth();
     const userId = auth.currentUser.uid;
 
     const getPayrolls = async () => {

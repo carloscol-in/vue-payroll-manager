@@ -20,7 +20,7 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
-import { auth, signInWithEmailAndPassword } from '../../utils/firebase';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default {
   name: 'Login',
@@ -31,6 +31,7 @@ export default {
     const formData = {};
     const formError = ref({});
     const loading = ref(false);
+    const auth = getAuth();
 
     const schemaForm = Yup.object().shape({
       email: Yup.string().email(true).required(true),

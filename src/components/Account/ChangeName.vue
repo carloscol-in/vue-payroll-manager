@@ -10,7 +10,7 @@ import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 import * as Yup from 'yup';
-import { updateProfile } from '../../utils/firebase';
+import { updateProfile } from 'firebase/auth';
 
 export default {
   name: 'ChangeName',

@@ -41,7 +41,8 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
-import { app, auth } from '../../utils/firebase';
+import { getAuth } from 'firebase/auth';
+import { app } from '../../utils/firebase';
 
 export default {
   name: 'UploadPayroll',
@@ -60,6 +61,7 @@ export default {
       return 'Select Payroll';
     });
 
+    const auth = getAuth();
     const storage = getStorage(app);
     const db = getFirestore(app);
 

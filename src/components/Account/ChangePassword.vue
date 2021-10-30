@@ -25,7 +25,7 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
-import { auth, updatePassword } from '../../utils/firebase';
+import { auth, updatePassword } from 'firebase/auth';
 import { reauthenticate } from '../../utils/firebase-functions';
 
 export default {

@@ -19,8 +19,8 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
+import { auth, updateEmail } from 'firebase/auth';
 import { reauthenticate } from '../../utils/firebase-functions';
-import { auth, updateEmail } from '../../utils/firebase';
 
 export default {
   name: 'ChangeEmail',

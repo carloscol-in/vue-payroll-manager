@@ -25,7 +25,7 @@
 <script>
 import { ref } from 'vue';
 import * as Yup from 'yup';
-import { auth, createUserWithEmailAndPassword } from '../../utils/firebase';
+import { auth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default {
   name: 'Signup',

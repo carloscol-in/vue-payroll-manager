@@ -9,7 +9,7 @@
 <script>
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { auth } from './utils/firebase';
+import { getAuth } from 'firebase/auth';
 import Auth from './views/Auth.vue';
 
 export default {
@@ -18,6 +18,7 @@ export default {
     Auth,
   },
   setup() {
+    const auth = getAuth();
     const store = useStore();
     const user = computed(() => store.state.user);
 

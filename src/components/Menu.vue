@@ -25,12 +25,13 @@
 <script>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-import { auth } from '../utils/firebase';
+import { getAuth } from 'firebase/auth';
 
 export default {
   name: 'Menu',
   setup() {
     const store = useStore();
+    const auth = getAuth();
     const user = computed(() => store.state.user);
 
     const logout = () => auth.signOut();
